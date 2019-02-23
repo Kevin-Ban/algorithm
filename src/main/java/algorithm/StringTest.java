@@ -1,12 +1,18 @@
 package algorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class StringTest {
 
     public static void main(String[] args){
+
+        List<String> list1 = Arrays.asList("a","b","c");
+        List<String> list2 = Arrays.asList("d","f");
+        list1.stream().flatMap(x -> list2.stream().map(y -> x + y)).forEach(System.out::println);
+
         List<String> list = new ArrayList();
         list.add("小明");
         list.add("小红");
