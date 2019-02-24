@@ -13,8 +13,6 @@ public class ObserverAdd implements Observer {
         showResult();
     }
 
-
-
     @Override
     public void showResult() {
         System.out.println(calculate());
