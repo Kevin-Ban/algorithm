@@ -4,13 +4,11 @@ public class TestObserver {
 
     public static void main(String[] args){
         Subject subject = new Subject();
-        Observer addObserver = new AddObserver();
-        Observer subObserver = new SubObserver();
-        subject.registerObserver(subObserver);
-        subject.registerObserver(addObserver);
-        subject.changeData(2, 6);
+        Observer add = new ObserverAdd();
+        Observer sub = new ObserverSub();
+        subject.registObserver(sub);
+        subject.registObserver(add);
 
-        subject.unRegisterObserver(subObserver);
-        subject.changeData(5, 6);
+        subject.changeData(9, 16);
     }
 }

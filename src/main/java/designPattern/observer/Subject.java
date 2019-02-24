@@ -5,42 +5,56 @@ import java.util.Optional;
 
 public class Subject {
 
-    private double param1;
+    private Double param1;
 
-    private double param2;
+    private Double param2;
 
-    public Subject(double param1, double param2) {
-        this.param1 = param1;
-        this.param2 = param2;
-        notifyObserver();
-    }
+    ArrayList<Observer> observers;
 
-    public Subject() {
-    }
-
-    private ArrayList<Observer> observers;
-
-    public void registerObserver(Observer observer){
+    /**
+     * 注册观察者
+     * @param observer
+     * @return
+     */
+    public boolean registObserver(Observer observer){
+        if(observer == null){
+            return false;
+        }
         this.observers = Optional.ofNullable(this.observers).orElse(new ArrayList<>());
-        observers.add(observer);
+        return this.observers.add(observer);
     }
 
-    public void unRegisterObserver(Observer observer){
-        observers.remove(observer);
+    /**
+     * 注销观察者
+     * @param observer
+     * @return
+     */
+    public boolean unRegistObserver(Observer observer){
+        if(observer == null){
+            return false;
+        }
+        if(observers == null){
+            return true;
+        }
+        return observers.remove(observer);
+    }
+
+    /**
+     * 当数据有修改时，统一通知相应的观察者
+     */
+    private void notifyObserver(){
+        if(this.observers != null && !this.observers.isEmpty()){
+            for (Observer item : this.observers) {
+                item.update(this.param1, this.param2);
+            }
+        }
     }
 
     public void changeData(double param1, double param2){
         this.param1 = param1;
         this.param2 = param2;
+        // 通知观察者
         notifyObserver();
-    }
-
-    public void notifyObserver(){
-        if(observers != null && !observers.isEmpty()){
-            for (Observer item : observers) {
-                item.update(this.param1, this.param2);
-            }
-        }
     }
 
 }
