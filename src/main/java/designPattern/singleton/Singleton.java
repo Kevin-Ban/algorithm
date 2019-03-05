@@ -3,8 +3,8 @@ package designPattern.singleton;
 public class Singleton {
 
     // region 双重锁机制
-
-    private static Singleton instance;
+    // volatile保证instance对所有线程可见
+    private static volatile Singleton instance;
 
     private Singleton(){
     }
