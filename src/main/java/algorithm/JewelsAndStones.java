@@ -24,6 +24,7 @@ public class JewelsAndStones {
         Integer result = 0;
         for(String s : set){
             long tmp = list1.stream().filter(c -> c.equals(s)).count();
+            
             result = result + (int)tmp;
         }
         return result;
