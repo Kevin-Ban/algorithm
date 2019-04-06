@@ -17,6 +17,7 @@ public class DuplicatesArray {
 	public static void main(String[] args){
 		int[] nums = new int[]{1,2,1,3,4,5,4};
 		int result = algorithm(nums);
+
 		System.out.println(result);
 	}
 
