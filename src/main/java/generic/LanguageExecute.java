@@ -10,7 +10,7 @@ public class LanguageExecute<T> {
         this.executor = executor;
     }
 
-    public List<T> list(T t) {
+    public BaseBean<T> list(T t) {
         return executor.list(t);
     }
 

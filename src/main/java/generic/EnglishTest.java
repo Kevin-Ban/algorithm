@@ -6,7 +6,7 @@ public class EnglishTest implements TestInterface<EnglishBean> {
 
 
     @Override
-    public List<EnglishBean> list(EnglishBean englishBean) {
+    public BaseBean list(EnglishBean englishBean) {
         return null;
     }
 

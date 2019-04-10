@@ -7,10 +7,13 @@ public class ChineseTest implements TestInterface<ChineseBean> {
 
 
     @Override
-    public List<ChineseBean> list(ChineseBean chineseBean) {
+    public BaseBean<ChineseBean> list(ChineseBean chineseBean) {
         List<ChineseBean> beans = new ArrayList<>(16);
         beans.add(new ChineseBean("chinese"));
-        return beans;
+        BaseBean bean = new BaseBean();
+        bean.setList(beans);
+        bean.setTotal(beans.size());
+        return bean;
     }
 
     @Override
