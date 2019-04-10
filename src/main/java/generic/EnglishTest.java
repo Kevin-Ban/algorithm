@@ -1,15 +1,27 @@
 package generic;
 
+import java.util.List;
+
 public class EnglishTest implements TestInterface<EnglishBean> {
 
+
     @Override
-    public EnglishBean list(EnglishBean englishBean) {
-        return new EnglishBean("123654");
+    public List<EnglishBean> list(EnglishBean englishBean) {
+        return null;
     }
 
-    public static void main(String[] args){
-        EnglishTest tmp = new EnglishTest();
-        EnglishBean tmp1 = tmp.list(null);
-        System.out.println(tmp1.getParam());
+    @Override
+    public Integer update(EnglishBean englishBean) {
+        return null;
+    }
+
+    @Override
+    public Integer insert(EnglishBean englishBean) {
+        return null;
+    }
+
+    @Override
+    public Integer delete(List<Integer> ids) {
+        return null;
     }
 }
