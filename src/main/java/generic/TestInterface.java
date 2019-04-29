@@ -2,7 +2,7 @@ package generic;
 
 import java.util.List;
 
-public interface TestInterface<T extends Object> {
+public interface TestInterface<T> {
 
     BaseBean<T> list(T t);
 
