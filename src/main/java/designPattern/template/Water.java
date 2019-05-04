@@ -10,6 +10,11 @@ public class Water extends DrinkClass {
 
     }
 
+//    @Override
+//    public void before() {
+//        System.out.println("正站在制作：白开水");
+//    }
+
     /**
      * 为了防止被 外部调用，可以设为private
      */

@@ -10,4 +10,9 @@ public class IceTea extends DrinkClass {
     public void makeWater() {
         System.out.println("加冰");
     }
+
+    @Override
+    public void before() {
+        this.setName("冰红茶");
+    }
 }

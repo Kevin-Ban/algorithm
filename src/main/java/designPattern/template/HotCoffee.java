@@ -11,4 +11,9 @@ public class HotCoffee extends DrinkClass {
     public void makeWater() {
         System.out.println("加热");
     }
+
+    @Override
+    public void before() {
+        this.setName("热咖啡");
+    }
 }
