@@ -36,7 +36,9 @@ public class Test1 {
         poolExecutor.execute(t3);
         poolExecutor.execute(t4);
         poolExecutor.execute(t5);
-        poolExecutor.execute(() -> { System.out.println("线程类三"); });
+        poolExecutor.execute(() -> {
+            System.out.println("线程类三");
+        });
         System.out.println("等待队列中的任务数量：" + poolExecutor.getQueue().size());
         poolExecutor.shutdown();
         Thread.yield();
@@ -47,30 +49,30 @@ public class Test1 {
     }
 }
 
-class MyThread extends Thread{
+class MyThread extends Thread {
 
     @Override
-    public void run(){
+    public void run() {
         System.out.println("当前线程为：" + Thread.currentThread().getName() + " - " + Thread.currentThread().getId());
     }
 }
 
-class MyThread2 extends  Thread{
+class MyThread2 extends Thread {
 
     private CyclicBarrier cyclicBarrier;
 
-    public MyThread2(CyclicBarrier cyclicBarrier){
+    public MyThread2(CyclicBarrier cyclicBarrier) {
         this.cyclicBarrier = cyclicBarrier;
     }
 
-    public MyThread2(){
+    public MyThread2() {
 
     }
 
     @Override
-    public void run(){
+    public void run() {
         System.out.println("线程类2：当前线程为：" + Thread.currentThread().getName() + " - " + Thread.currentThread().getId());
-        if(cyclicBarrier != null){
+        if (cyclicBarrier != null) {
             try {
                 System.out.println("sleep " + 3 + "秒");
                 Thread.sleep(3000);
