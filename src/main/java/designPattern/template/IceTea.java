@@ -11,6 +11,15 @@ public class IceTea extends DrinkClass {
         System.out.println("加冰");
     }
 
+    /**
+     * 设置钩子
+     * @return
+     */
+    @Override
+    public boolean isOnlyWater() {
+        return false;
+    }
+
     @Override
     public void before() {
         this.setName("冰红茶");

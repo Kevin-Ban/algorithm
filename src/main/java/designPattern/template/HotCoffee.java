@@ -12,6 +12,15 @@ public class HotCoffee extends DrinkClass {
         System.out.println("加热");
     }
 
+    /**
+     * 设置钩子
+     * @return
+     */
+    @Override
+    public boolean isOnlyWater() {
+        return false;
+    }
+
     @Override
     public void before() {
         this.setName("热咖啡");

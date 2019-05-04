@@ -8,7 +8,7 @@ public abstract class DrinkClass {
     /**
      * 钩子，这个属性的值直接决定某些方法是否会执行
      */
-    private boolean onlyWater;
+    public abstract boolean isOnlyWater();
 
     private String name = "饮料";
 
@@ -25,11 +25,11 @@ public abstract class DrinkClass {
         System.out.println("正在制作：" + this.name);
 
         getWater();
-        if(!onlyWater){
+        if(!isOnlyWater()){
             getMaterial();
         }
         makeWater();
-        System.out.println("-----------------饮料完成-----------------");
+        System.out.println("-----------------" + this.name + "：制作完成-----------------");
     }
 
     private void getWater(){

@@ -10,10 +10,10 @@ public class Water extends DrinkClass {
 
     }
 
-//    @Override
-//    public void before() {
-//        System.out.println("正站在制作：白开水");
-//    }
+    @Override
+    public void before() {
+        this.setName("白开水");
+    }
 
     /**
      * 为了防止被 外部调用，可以设为private
@@ -21,7 +21,11 @@ public class Water extends DrinkClass {
     @Override
     public void makeWater() {
         // 设置钩子，当onlyWater为true时，则不加任何材料
-        this.setOnlyWater(true);
         System.out.println("白开水, 加热.");
+    }
+
+    @Override
+    public boolean isOnlyWater() {
+        return true;
     }
 }
