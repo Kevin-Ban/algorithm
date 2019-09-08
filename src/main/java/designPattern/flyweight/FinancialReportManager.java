@@ -1,8 +1,13 @@
 package designPattern.flyweight;
 
+import lombok.Data;
+import lombok.ToString;
+
 /**
  * 财务报表
  */
+@ToString
+@Data
 public class FinancialReportManager implements IReportManager {
 
     protected String tenantId = null;
