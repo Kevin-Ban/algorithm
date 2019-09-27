@@ -1,8 +1,5 @@
 package test;
 
-import com.google.common.io.Files;
-
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -47,7 +44,7 @@ public class NIOTest {
             b.put((byte) i);
         }
         System.out.println("limit = " + b.limit() + "; capacity = " + b.capacity() + "; position=" + b.position());
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             System.out.println(b.get());
         }
         System.out.println();
