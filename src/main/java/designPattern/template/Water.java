@@ -13,6 +13,7 @@ public class Water extends DrinkClass {
     @Override
     public void before() {
         this.setName("白开水");
+        super.before();
     }
 
     /**
@@ -20,10 +21,14 @@ public class Water extends DrinkClass {
      */
     @Override
     public void makeWater() {
-        // 设置钩子，当onlyWater为true时，则不加任何材料
-        System.out.println("白开水, 加热.");
+        System.out.println("加热.");
     }
 
+    /**
+     * 设置钩子，当onlyWater为true时，则不加任何材料
+     *
+     * @return
+     */
     @Override
     public boolean isOnlyWater() {
         return true;

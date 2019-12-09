@@ -10,12 +10,11 @@ package designPattern.template;
 public class Template {
 
     public static void main(String[] args) {
+        // 制作冰红茶
         DrinkClass iceTea = new IceTea();
         iceTea.getDrink();
 
-        DrinkClass hotCoffee = new HotCoffee();
-        hotCoffee.getDrink();
-
+        // 制作白开水
         DrinkClass water = new Water();
         water.getDrink();
     }

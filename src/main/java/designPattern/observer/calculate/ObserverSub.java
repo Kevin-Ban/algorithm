@@ -1,4 +1,4 @@
-package designPattern.observer;
+package designPattern.observer.calculate;
 
 public class ObserverSub implements Observer {
     private Double param1;

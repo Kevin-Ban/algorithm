@@ -1,4 +1,4 @@
-package designPattern.observer;
+package designPattern.observer.calculate;
 
 public interface Observer {
 

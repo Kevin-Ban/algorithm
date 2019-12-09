@@ -23,5 +23,6 @@ public class IceTea extends DrinkClass {
     @Override
     public void before() {
         this.setName("冰红茶");
+        super.before();
     }
 }

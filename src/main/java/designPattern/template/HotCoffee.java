@@ -24,5 +24,6 @@ public class HotCoffee extends DrinkClass {
     @Override
     public void before() {
         this.setName("热咖啡");
+        super.before();
     }
 }
