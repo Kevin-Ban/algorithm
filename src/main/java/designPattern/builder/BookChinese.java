@@ -16,12 +16,12 @@ public class BookChinese implements BookBuilder {
 
     @Override
     public void setAuthor() {
-        this.book.setAuthor("Chinese Teacher");
+        this.book.setAuthor("中文教师");
     }
 
     @Override
     public void setName() {
-        this.book.setName("Chinese Book");
+        this.book.setName("中文书");
     }
 
     @Override
