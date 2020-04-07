@@ -1,7 +1,6 @@
 package threadPool;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import javafx.concurrent.ScheduledService;
 
 import java.util.concurrent.*;
 

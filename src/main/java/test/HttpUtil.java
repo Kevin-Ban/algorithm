@@ -77,9 +77,10 @@ public class HttpUtil {
         String szys = "http://ghzyj.gz.gov.cn/sofpro/bmyyqt/gzlpc/gfgs/szys/xmxzyjs.jsp";
         String ghgs = "http://ghzyj.gz.gov.cn/sofpro/bmyyqt/gzlpc/gfgs/pqgs.jsp";
         String sfzx = "http://10.194.253.122/sofpro/bmyyqt/gzlpc/sfcx/sfcx.jsp";
-        String result = http(sfzx, param);
+        String result = http(ghgs, param);
         Document document = Jsoup.parse(result);
-        String curPageNo = document.getElementById("thisPage").attr("value");
+//        String curPageNo = document.getElementById("thisPage").attr("value");
+        String curPageNo = document.getElementById("curPageNo").attr("value");
         Element ePage = document.getElementsByClass("pagination_index_last").get(0);
         String s = ePage.text();
         String totalRecord = s.substring(s.indexOf("共") + 1, s.indexOf("条"));
@@ -87,36 +88,40 @@ public class HttpUtil {
 
         System.out.println(curPageNo + " " + totalRecord);
 
-        Elements elements = Optional.ofNullable(document.getElementsByClass("zxxx_list_table")).map(c -> c.get(0)).map(c -> c.select("tr")).orElse(null);
+//        Elements elements = Optional.ofNullable(document.getElementsByClass("zxxx_list_table")).map(c -> c.get(0)).map(c -> c.select("tr")).orElse(null);
+        Elements elements = Optional.ofNullable(document.getElementsByClass("pqgs_list_table")).map(c -> c.get(0)).map(c -> c.select("tr")).orElse(null);
         if (elements != null) {
             elements.remove(0);
-            for (Element e : elements) {
-                Elements tds = e.getElementsByTag("td");
-                String date = tds.get(0).text();
-                String number = tds.get(1).text();
-                String type = tds.get(2).text();
-                String unit = tds.get(3).text();
-                String manager = tds.get(4).text();
-                String content = tds.get(5).text();
-                System.out.println(date + " " + number + " " + type + " " + unit + " " + manager + " " + content);
-            }
-            // region 公示查询
-//            for(Element e : elements) {
-//                Element aTag = e.getElementsByTag("a").get(0);
-//                String name = aTag.text();
-//                String href = aTag.attr("href");
-//
-//                String info = e.getElementsByTag("p").get(0).text();
-//                String number = info.substring(info.indexOf("案号：") + 3, info.indexOf("公示类别："));
-//                String type = info.substring(info.indexOf("公示类别：") + 5, info.indexOf("建设单位："));
-//                String unit = info.substring(info.indexOf("建设单位：") + 5);
-//
-//                System.out.println(e);
+            // region 协助司法执行信息查询
+//            for (Element e : elements) {
 //                Elements tds = e.getElementsByTag("td");
-//                String status = tds.get(1).text();
-//                String date = tds.get(2).text();
-//                System.out.println(number + " " + type + " " + unit + " " + status + " " + date);
+//                String date = tds.get(0).text();
+//                String number = tds.get(1).text();
+//                String type = tds.get(2).text();
+//                String unit = tds.get(3).text();
+//                String manager = tds.get(4).text();
+//                String content = tds.get(5).text();
+//                System.out.println(date + " " + number + " " + type + " " + unit + " " + manager + " " + content);
 //            }
+            // endregion
+
+            // region 公示查询
+            for (Element e : elements) {
+                Element aTag = e.getElementsByTag("a").get(0);
+                String name = aTag.text();
+                String href = aTag.attr("href");
+
+                String info = e.getElementsByTag("p").get(0).text();
+                String number = info.substring(info.indexOf("案号：") + 3, info.indexOf("公示类别："));
+                String type = info.substring(info.indexOf("公示类别：") + 5, info.indexOf("建设单位："));
+                String unit = info.substring(info.indexOf("建设单位：") + 5);
+
+                System.out.println(e);
+                Elements tds = e.getElementsByTag("td");
+                String status = tds.get(1).text();
+                String date = tds.get(2).text();
+                System.out.println(number + " " + type + " " + unit + " " + status + " " + date);
+            }
             // endregion
 
             //region 四证一书
