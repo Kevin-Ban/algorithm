@@ -1,4 +1,4 @@
-package spring.aop;
+package spring.aop.service;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AspectTest {
 
-    @Around("@annotation(spring.aop.TestAop)")
+    @Around("@annotation(spring.aop.service.TestAop)")
     public Object aop(ProceedingJoinPoint joinPoint) throws Throwable {
         System.out.println("before-----");
         Object result = joinPoint.proceed();
