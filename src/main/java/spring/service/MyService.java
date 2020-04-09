@@ -1,13 +1,20 @@
 package spring.service;
 
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
+/**
+ * 条件加载
+ */
+@Conditional(ConditionService.class)
 @Component
-public class MyService implements InitializingBean {
+public class MyService implements InitializingBean, DisposableBean {
 
     @Autowired
     private YourService yourService;
@@ -15,7 +22,7 @@ public class MyService implements InitializingBean {
     private String field = "myService";
 
     public MyService() {
-        System.out.println("构造函数：正在创建对象");
+        System.out.println("bean的构造函数");
     }
 
     public void query() {
@@ -24,11 +31,21 @@ public class MyService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println("InitializingBean方法被执行");
+        System.out.println("InitializingBean -> afterPropertiesSet");
     }
 
     @PostConstruct
     public void init() {
-        System.out.println("构造方法执行完成之后@PostConstruct：init");
+        System.out.println("@PostConstruct");
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        System.out.println("@PreDestroy");
+    }
+
+    @Override
+    public void destroy() {
+        System.out.println("DisposableBean -> destroy");
     }
 }

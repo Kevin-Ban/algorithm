@@ -11,8 +11,7 @@ class MyServicePostProccessors implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof MyService) {
-            System.out.println("BeanPostProcessor：postProcessBeforeInitialization");
-            ((MyService) bean).query();
+            System.out.println("BeanPostProcessor -> postProcessBeforeInitialization");
         }
         return bean;
     }
@@ -20,8 +19,7 @@ class MyServicePostProccessors implements BeanPostProcessor {
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof MyService) {
-            System.out.println("BeanPostProcessor：postProcessAfterInitialization 此时bean已经完全创建");
-            ((MyService) bean).query();
+            System.out.println("BeanPostProcessor -> postProcessAfterInitialization");
         }
         return bean;
     }

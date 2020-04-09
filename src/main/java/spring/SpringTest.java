@@ -18,6 +18,7 @@ public class SpringTest {
     public void test1() {
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
         MyService myService = context.getBean(MyService.class);
+        ((AnnotationConfigApplicationContext) context).close();
 //        myService.query();
     }
 }

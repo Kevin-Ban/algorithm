@@ -7,5 +7,8 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("spring")
 public class SpringConfig {
 
-
+    /**
+     * 条件加载机制
+     */
+    public final static boolean FLAG = true;
 }
