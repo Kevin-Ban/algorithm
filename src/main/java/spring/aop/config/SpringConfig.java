@@ -1,14 +1,11 @@
-package spring.config;
+package spring.aop.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan("spring")
+@EnableAspectJAutoProxy
+@ComponentScan("spring.aop")
 public class SpringConfig {
-
-    /**
-     * 条件加载机制
-     */
-    public final static boolean FLAG = true;
 }

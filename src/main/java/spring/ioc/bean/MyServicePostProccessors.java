@@ -1,9 +1,9 @@
-package spring.bean;
+package spring.ioc.bean;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
-import spring.service.MyService;
+import spring.ioc.service.MyService;
 
 public @Component
 class MyServicePostProccessors implements BeanPostProcessor {

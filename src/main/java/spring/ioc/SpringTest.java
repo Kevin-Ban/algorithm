@@ -1,11 +1,11 @@
-package spring;
+package spring.ioc;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
-import spring.config.SpringConfig;
-import spring.service.MyService;
+import spring.ioc.config.SpringConfig;
+import spring.ioc.service.MyService;
 
 @Configuration
 public class SpringTest {
