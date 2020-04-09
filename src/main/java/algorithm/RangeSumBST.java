@@ -29,7 +29,7 @@ public class RangeSumBST {
     }
 
     /**
-     * Definition for a binary tree node.
+     * Definition for a binary other.tree node.
      *
      */
      class TreeNode {

@@ -1,4 +1,8 @@
 # algorithm
-个人在leetcode上刷得一些题目
+leetcode
 # designPattern
-设计模式得一些总结
+设计模式
+# spring
+spring的一些简单测试
+# mybatis
+mybatis的简单测试

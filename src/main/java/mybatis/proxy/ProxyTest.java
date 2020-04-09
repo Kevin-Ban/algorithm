@@ -53,7 +53,7 @@ class CityHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Object o = method.invoke(cityMapper, args);
-        System.out.println("test");
+        System.out.println("other/test");
         return o;
     }
 }
