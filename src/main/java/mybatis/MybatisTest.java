@@ -1,7 +1,7 @@
 package mybatis;
 
 import mybatis.mapper.CityMapper;
-import mybatis.mapper.CityMapperImpl;
+import mybatis.plugin.MyPlugin;
 import org.apache.ibatis.datasource.pooled.PooledDataSource;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
@@ -40,6 +40,8 @@ public class MybatisTest {
         Environment environment = new Environment("development", transactionFactory, dataSource);
         Configuration configuration = new Configuration(environment);
         configuration.addMapper(CityMapper.class);
+        // 注册一个插件
+        configuration.addInterceptor(new MyPlugin());
         // SqlSession是线程不安全的，每个线程必须拥有一个session，不允许线程共享或设置成静态变量等
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 //        String resource = "F:\\Code\\javaCode\\myAlgorithm\\src\\main\\java\\mybatis\\config.xml";
@@ -52,12 +54,13 @@ public class MybatisTest {
         // 通过session获取到mapper类
         CityMapper cityMapper = sqlSession.getMapper(CityMapper.class);
 
-        CityMapper cityMapper1 = new CityMapperImpl();
-        cityMapper1.query("");
+//        CityMapper cityMapper1 = new CityMapperImpl();
+//        cityMapper1.query("");
 
 //        int other.result = cityMapper.insert("2222", "code");
         List<Map<String, Object>> list = cityMapper.query("");
         System.out.println(list);
+//        Map<String, Object> result = cityMapper.queryOne();
         sqlSession.close();
     }
 
