@@ -103,6 +103,7 @@ class Sold extends Thread {
                     System.out.println("补充的票号：" + i);
                     ticket.add(i + "");
                 }
+                System.out.println("补好票了，你卖票吧");
                 condition.signalAll();
                 // **** 特别重要，当达到最大的放票次数之后，就不需要让补票的线程继续等待，直接关闭即可
                 // 如果没有达到最大的放票次数，则让补票的线程等待票被卖完才能继续补票
