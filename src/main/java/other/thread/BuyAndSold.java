@@ -16,8 +16,8 @@ public class BuyAndSold {
         int times = 2;
         Sold sold = new Sold("sold", lock, condition, ticket, times);
         Buy buy = new Buy("buy", lock, condition, ticket, times);
-        sold.start();
         buy.start();
+        sold.start();
         Thread.sleep(1);
     }
 }
@@ -63,7 +63,7 @@ class Buy extends Thread {
                 System.out.println("开始售票");
                 Iterator<String> iterator = ticket.iterator();
                 while (iterator.hasNext()) {
-                    System.out.println(Thread.currentThread().getName() + " : " + iterator.next());
+                    System.out.println("买到的票号 : " + iterator.next());
                     iterator.remove();
                 }
             }
@@ -100,6 +100,7 @@ class Sold extends Thread {
             for (int j = 0; j < times; j++) {
                 System.out.println("补票");
                 for (int i = 0; i < 5; i++) {
+                    System.out.println("补充的票号：" + i);
                     ticket.add(i + "");
                 }
                 condition.signalAll();
