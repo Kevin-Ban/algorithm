@@ -16,8 +16,9 @@ public class BuyAndSold {
         int times = 2;
         Sold sold = new Sold("sold", lock, condition, ticket, times);
         Buy buy = new Buy("buy", lock, condition, ticket, times);
-        buy.start();
         sold.start();
+        buy.start();
+
         Thread.sleep(1);
     }
 }
@@ -54,16 +55,16 @@ class Buy extends Thread {
         try {
             lock.lock();
             for (int i = 0; i < times; i++) {
-                System.out.println("买票");
+                System.out.println(this.getName() + ":" + "买票");
                 if (ticket == null || ticket.isEmpty()) {
-                    System.out.println("票不够了，通知影院补票，并且暂停售票");
+                    System.out.println(this.getName() + ":" + "票不够了，通知影院补票，并且暂停售票");
                     condition.signalAll();
                     condition.await();
                 }
-                System.out.println("开始售票");
+                System.out.println(this.getName() + ":" + "开始售票");
                 Iterator<String> iterator = ticket.iterator();
                 while (iterator.hasNext()) {
-                    System.out.println("买到的票号 : " + iterator.next());
+                    System.out.println(this.getName() + ":" + "买到的票号 : " + iterator.next());
                     iterator.remove();
                 }
             }
@@ -98,12 +99,12 @@ class Sold extends Thread {
         try {
             lock.lock();
             for (int j = 0; j < times; j++) {
-                System.out.println("补票");
+                System.out.println(this.getName() + ":" + "补票");
                 for (int i = 0; i < 5; i++) {
-                    System.out.println("补充的票号：" + i);
+                    System.out.println(this.getName() + ":" + "补充的票号：" + i);
                     ticket.add(i + "");
                 }
-                System.out.println("补好票了，你卖票吧");
+                System.out.println(this.getName() + ":" + "补好票了，你卖票吧");
                 condition.signalAll();
                 // **** 特别重要，当达到最大的放票次数之后，就不需要让补票的线程继续等待，直接关闭即可
                 // 如果没有达到最大的放票次数，则让补票的线程等待票被卖完才能继续补票
