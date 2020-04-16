@@ -19,4 +19,9 @@ public class CityMapperImpl implements CityMapper {
     public List<Map<String, Object>> queryByXml() {
         return null;
     }
+
+    @Override
+    public Map<String, Object> queryOne() {
+        return null;
+    }
 }

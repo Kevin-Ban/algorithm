@@ -1,8 +1,11 @@
 package other.threadPool.BuildThreadPool;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class BetterThreadPool extends ThreadPoolExecutor {
+
+    public static final AtomicInteger runningThread = new AtomicInteger(0);
 
     public BetterThreadPool(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
         super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue);

@@ -19,4 +19,7 @@ public interface CityMapper {
 
     List<Map<String, Object>> queryByXml();
 
+    @Select("select * from city")
+    Map<String, Object> queryOne();
+
 }

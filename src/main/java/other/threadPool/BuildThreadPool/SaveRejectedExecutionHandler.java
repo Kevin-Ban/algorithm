@@ -7,6 +7,8 @@ public class SaveRejectedExecutionHandler implements RejectedExecutionHandler {
 
     @Override
     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+        if (executor.getMaximumPoolSize() > executor.getActiveCount()) {
 
+        }
     }
 }

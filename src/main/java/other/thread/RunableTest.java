@@ -16,19 +16,5 @@ public class RunableTest implements Runnable {
 
     @Override
     public void run() {
-        lock.lock();
-        for (int i = 0; i < 10; i++) {
-            if (i == 5) {
-                try {
-                    condition.signalAll();
-                    condition.await();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            System.out.println(Thread.currentThread().getName() + "：测试（Runnable）: " + i);
-
-        }
-        lock.unlock();
     }
 }
