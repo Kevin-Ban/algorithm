@@ -3,14 +3,24 @@ package other.thinkinjava.p130;
 public class Pratice14 {
 
     public static void main(String[] args) {
-        B b = new B();
-        B b2 = new B();
+//        B b = new B();
+//        B b2 = new B();
+        A a = new A("构造函数");
+        A a2 = new A();
     }
 }
 
 class A {
+    {
+        System.out.println("非静态代码块");
+    }
+
     public A(String flag) {
         System.out.println(flag);
+    }
+
+    public A() {
+        System.out.println("空构造函数");
     }
 }
 
