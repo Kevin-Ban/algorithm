@@ -1,7 +1,10 @@
 package other.test;
 
+import com.google.common.base.Charsets;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.hash.BloomFilter;
+import com.google.common.hash.Funnels;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
@@ -18,6 +21,8 @@ public class GuavaTest {
         Cache<String, String> cache = CacheBuilder.newBuilder().build();
         System.out.println(cache.get("test1", new MyCallable("test1", map)));
         System.out.println(cache.get("test1", new MyCallable("test1", map)));
+
+        BloomFilter<String> bloomFilter = BloomFilter.create(Funnels.stringFunnel(Charsets.UTF_8), 2000);
     }
 
 
