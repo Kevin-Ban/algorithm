@@ -14,15 +14,13 @@ public class BubbleSort extends SortTemplate {
     }
 
     @Override
-    int[] sort(int[] a) {
+    public int[] sort(int[] a) {
         int length = a.length;
         for (int i = 0; i < length - 1; i++) {
             for (int j = 0; j < length - 1 - i; j++) {
                 //将元素往后移动，第一次循环结束之后，最大的元素将会被放在最后面
-                if (a[j] > a[j + 1]) {
-                    int temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
+                if (lessThan(a[j + 1], a[j])) {
+                    swap(a, j, j + 1);
                 }
             }
         }
