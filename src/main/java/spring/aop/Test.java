@@ -16,5 +16,6 @@ public class Test {
         testAopService.test1();
         //使用spring aop动态代理实际上是使用JDK或者cglib生成了一个新的代理对象
         System.out.println(testAopService.getClass());
+
     }
 }

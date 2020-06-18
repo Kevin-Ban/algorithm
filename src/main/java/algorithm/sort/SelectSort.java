@@ -15,7 +15,7 @@ public class SelectSort extends SortTemplate {
     }
 
     @Override
-    int[] sort(int[] a) {
+    public int[] sort(int[] a) {
         int length = a.length;
         for (int i = 0; i < length; i++) {
             //记录最小值，默认是数组中的第一个元素
