@@ -6,9 +6,11 @@ import java.util.Set;
 public class QuickSort extends SortTemplate {
 
     public static void main(String[] args) {
-        QuickSort sort = new QuickSort();
-        String s = "abcabcbb";
-        sort.character(s);
+        SortTemplate sort = new QuickSort();
+        int[] a = new int[]{1, 9, 4, 5, 7, 3, 1, 6, 2};
+//        sort.sortAndPrint(a);
+        ((QuickSort) sort).s(a, 0, a.length - 1);
+        sort.print(a);
     }
 
     public int character(String s) {
@@ -34,17 +36,21 @@ public class QuickSort extends SortTemplate {
     }
 
     private int[] quickSort(int[] arr, int start, int end) {
+        //定义初始值
         int pivot = arr[start];
         int i = start;
         int j = end;
         while (i < j) {
+            //在后半段找到比目标值小的数据
             while (i < j && arr[j] > pivot) {
                 j--;
             }
+            //在前半段找到比目标值小的数据
             while (i < j && arr[i] < pivot) {
                 i++;
             }
-            if (arr[i] == arr[j] && i < j) {
+            // 发现两个数相同时，不进行交换操作
+            if (i < j && arr[i] == arr[j]) {
                 i++;
             } else {
                 int temp = arr[i];
@@ -92,5 +98,33 @@ public class QuickSort extends SortTemplate {
         qSort(arr, leftIndex, left - 1);
         //对基准值右边的元素进行递归排序。
         qSort(arr, right + 1, rightIndex);
+    }
+
+    private int[] s(int[] a, int start, int end) {
+        int mid = a[start];
+        int i = start;
+        int j = end;
+        while (i < j) {
+            while (i < j && a[i] < mid) {
+                i++;
+            }
+            while (i < j && a[j] > mid) {
+                j--;
+            }
+            if (i < j && a[i] == a[j]) {
+                i++;
+            } else {
+                int tmp = a[i];
+                a[i] = a[j];
+                a[j] = tmp;
+            }
+        }
+        if (i - 1 > start) {
+            a = s(a, start, i - 1);
+        }
+        if (j + 1 < end) {
+            a = s(a, j + 1, end);
+        }
+        return a;
     }
 }
