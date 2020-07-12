@@ -13,7 +13,7 @@ public class QuickSort extends SortTemplate {
         return quickSort(a, 0, a.length - 1);
     }
 
-    private int[] quickSort(int[] a, int start, int end) {
+    public int[] quickSort(int[] a, int start, int end) {
         int mid = a[start];
         int i = start;
         int j = end;
@@ -32,7 +32,6 @@ public class QuickSort extends SortTemplate {
                 a[j] = tmp;
             }
         }
-        //这里为什么是 i - 1 > start ?
         if (i - 1 > start) {
             quickSort(a, start, i - 1);
         }
