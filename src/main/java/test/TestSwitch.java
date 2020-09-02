@@ -1,16 +1,21 @@
 package test;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 public class TestSwitch {
 
-    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException,
+            InstantiationException, NoSuchFieldException, NoSuchMethodException, InvocationTargetException {
         String classPath = "test.TestPerson";
         Class clazz = Class.forName(classPath);
-        if (clazz.equals(TestPerson.class)) {
-            TestAnnotion data = (TestAnnotion) clazz.getAnnotation(TestAnnotion.class);
-            TestPerson person = (TestPerson) clazz.newInstance();
-            person.setPassword("密码");
-            person.setName("姓名");
-            System.out.println(person);
-        }
+        TestPerson person = (TestPerson) clazz.newInstance();
+        Field data = clazz.getField("data");
+//        data.setInt(person, 2);
+        Method getName = clazz.getMethod("getName");
+        person.setName("333");
+        System.out.println("通过反射调用方法：" + getName.invoke(person));
+        System.out.println(person);
     }
 }

@@ -5,6 +5,8 @@ import java.io.Serializable;
 @TestAnnotion("testClass")
 public class TestPerson implements Serializable {
 
+    public static final int data = 1;
+
     private static final long serialVersionUID = 123L;
 
     private String name;
@@ -44,6 +46,6 @@ public class TestPerson implements Serializable {
         return "TestPerson{" +
                 "name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                '}';
+                ", data='" + data + "'}";
     }
 }
